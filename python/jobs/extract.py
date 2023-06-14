@@ -1,4 +1,5 @@
 from pandas import read_csv
+from resources import resources
 
 
 def extract_data(datasets: tuple) -> tuple:
@@ -12,5 +13,5 @@ def extract_data(datasets: tuple) -> tuple:
 
 
 def get_directory(dataset: str) -> str:
-    base_dir = "~/mekari-de-assignment/data/"
+    base_dir = resources.resources.get("base_dir")
     return base_dir + dataset + ".csv"

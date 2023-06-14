@@ -1,8 +1,8 @@
 from jobs import extract, transform, load
-
+from resources import resources
 
 def main():
-    datasets = ("employees", "timesheets")
+    datasets = resources.resources.get("datasets")
 
     dataframes = extract.extract_data(datasets)
     salary_per_hour = transform.transform_data(dataframes)

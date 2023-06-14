@@ -1,4 +1,5 @@
-GET_SALARY_PER_MONTH = """
+queries = {
+    "salary_per_month_query": """
 WITH wrangled_data AS
 (
     SELECT
@@ -10,7 +11,7 @@ WITH wrangled_data AS
     LEFT JOIN employees
         ON timesheets.employee_id = employees.employe_id
     WHERE
-        CAST(timesheets."date" AS DATE) >= DATE'{TODAY_DATE}'
+        CAST(timesheets."date" AS DATE) >= DATE'{YESTERDAY_DATE}'
         AND timesheets.checkin IS NOT NULL AND timesheets.checkout IS NOT NULL
 )
 SELECT
@@ -23,4 +24,13 @@ FROM wrangled_data
 GROUP BY
     timesheet_month
     , branch_id
-"""
+""",
+    "troubleshooting_query": """
+    SELECT
+        *
+    FROM timesheets
+    WHERE
+        CAST(timesheets."date" AS DATE) = DATE'{YESTERDAY_DATE}'
+        AND (timesheets.checkin IS NULL OR timesheets.checkout IS NULL)
+    """
+}
