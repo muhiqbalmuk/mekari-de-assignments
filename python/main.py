@@ -1,8 +1,10 @@
 from jobs import extract, transform, load
 
 def main():
-    dataset = extract.extract_data()
-    # salary_per_hour = transform(dataset)
+    datasets = ("employees", "timesheets")
+
+    dataframes = extract.extract_data(datasets)
+    salary_per_hour = transform.transform_data(dataframes)
     # load(salary_per_hour)
 
 if __name__ == "__main__":

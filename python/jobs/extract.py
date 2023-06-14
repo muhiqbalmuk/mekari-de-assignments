@@ -1,10 +1,10 @@
 from pandas import read_csv
 
-def extract_data():
-    path = [get_directory(dataset) for dataset in ("employees", "timesheets")]
-    datasets = [read_csv(_) for _ in path]
+def extract_data(datasets: tuple) -> tuple:
+    path = map(get_directory, datasets)
+    dataframes = tuple(map(read_csv, path))
 
-    return datasets
+    return dataframes
 
 def get_directory(dataset: str) -> str:
     base_dir = "~/mekari-de-assignment/data/"
