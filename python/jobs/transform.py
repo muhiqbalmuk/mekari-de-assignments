@@ -19,6 +19,8 @@ def get_transformation_query() -> str:
     today_date = date.today()
     yesterday_date = today_date - timedelta(days=1)
     yesterday_month = yesterday_date.replace(day=1)
-    transformation_query = etl_scripts.GET_SALARY_PER_MONTH.format(TODAY_DATE = yesterday_month.strftime("%Y-%m-%d"))
+    transformation_query = etl_scripts.GET_SALARY_PER_MONTH.format(
+        TODAY_DATE=yesterday_month.strftime("%Y-%m-%d")
+    )
 
     return transformation_query
