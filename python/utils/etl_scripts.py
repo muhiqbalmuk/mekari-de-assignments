@@ -10,7 +10,7 @@ WITH wrangled_data AS
     LEFT JOIN employees
         ON timesheets.employee_id = employees.employe_id
     WHERE
-        CAST(timesheets."date" AS DATE) = DATE'{TODAY_DATE}'
+        CAST(timesheets."date" AS DATE) >= DATE'{TODAY_DATE}'
         AND timesheets.checkin IS NOT NULL AND timesheets.checkout IS NOT NULL
 )
 SELECT
